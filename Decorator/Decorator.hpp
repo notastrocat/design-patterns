@@ -42,71 +42,73 @@ protected:
     std::unique_ptr<Beverage> bev;
 
 public:
-    explicit IAddOnDecorator(std::unique_ptr<Beverage> beverage) 
+    explicit IAddOnDecorator(std::unique_ptr<Beverage> beverage = {}) 
         : bev(std::move(beverage)) {}
     virtual ~IAddOnDecorator() = default;
 };
 
+// ---
+
 // Concrete Implementations of the Wrapper Interface - *AddOn Decorators*
 class WhippedCream : public IAddOnDecorator {
 public:
-    explicit WhippedCream(std::unique_ptr<Beverage> beverage) : IAddOnDecorator(std::move(beverage)) {}
+    explicit WhippedCream(std::unique_ptr<Beverage> beverage = {}) : IAddOnDecorator(std::move(beverage)) {}
     std::string getDescription() const override;
     float getCost() const override;
 };
 
 class Caramel : public IAddOnDecorator {
 public:
-    explicit Caramel(std::unique_ptr<Beverage> beverage) : IAddOnDecorator(std::move(beverage)) {}
+    explicit Caramel(std::unique_ptr<Beverage> beverage = {}) : IAddOnDecorator(std::move(beverage)) {}
     std::string getDescription() const override;
     float getCost() const override;
 };
 
 class AlmondMilk : public IAddOnDecorator {
 public:
-    explicit AlmondMilk(std::unique_ptr<Beverage> beverage) : IAddOnDecorator(std::move(beverage)) {}
+    explicit AlmondMilk(std::unique_ptr<Beverage> beverage = {}) : IAddOnDecorator(std::move(beverage)) {}
     std::string getDescription() const override;
     float getCost() const override;
 };
 
 class OatMilk : public IAddOnDecorator {
 public:
-    explicit OatMilk(std::unique_ptr<Beverage> beverage) : IAddOnDecorator(std::move(beverage)) {}
+    explicit OatMilk(std::unique_ptr<Beverage> beverage = {}) : IAddOnDecorator(std::move(beverage)) {}
     std::string getDescription() const override;
     float getCost() const override;
 };
 
 class FullCream : public IAddOnDecorator {
 public:
-    explicit FullCream(std::unique_ptr<Beverage> beverage) : IAddOnDecorator(std::move(beverage)) {}
+    explicit FullCream(std::unique_ptr<Beverage> beverage = {}) : IAddOnDecorator(std::move(beverage)) {}
     std::string getDescription() const override;
     float getCost() const override;
 };
 
 class HalfNHalf : public IAddOnDecorator {
 public:
-    explicit HalfNHalf(std::unique_ptr<Beverage> beverage) : IAddOnDecorator(std::move(beverage)) {}
+    explicit HalfNHalf(std::unique_ptr<Beverage> beverage = {}) : IAddOnDecorator(std::move(beverage)) {}
     std::string getDescription() const override;
     float getCost() const override;
 };
 
 class Matcha : public IAddOnDecorator {
 public:
-    explicit Matcha(std::unique_ptr<Beverage> beverage) : IAddOnDecorator(std::move(beverage)) {}
+    explicit Matcha(std::unique_ptr<Beverage> beverage = {}) : IAddOnDecorator(std::move(beverage)) {}
     std::string getDescription() const override;
     float getCost() const override;
 };
 
 class Cardamom : public IAddOnDecorator {
 public:
-    explicit Cardamom(std::unique_ptr<Beverage> beverage) : IAddOnDecorator(std::move(beverage)) {}
+    explicit Cardamom(std::unique_ptr<Beverage> beverage = {}) : IAddOnDecorator(std::move(beverage)) {}
     std::string getDescription() const override;
     float getCost() const override;
 };
 
 class EarlGrey : public IAddOnDecorator {
 public:
-    explicit EarlGrey(std::unique_ptr<Beverage> beverage) : IAddOnDecorator(std::move(beverage)) {}
+    explicit EarlGrey(std::unique_ptr<Beverage> beverage = {}) : IAddOnDecorator(std::move(beverage)) {}
     std::string getDescription() const override;
     float getCost() const override;
 };

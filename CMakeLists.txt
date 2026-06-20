@@ -17,9 +17,13 @@ set(CMAKE_CXX_STANDARD 20)
 
 set(INSTALL_PREFIX "${CMAKE_BINARY_DIR}/install")
 
+include_directories("${CMAKE_SOURCE_DIR}/utils")
+
 add_subdirectory(Decorator)
+add_subdirectory(Strategy)
 
 add_executable(main main.cc)
 target_link_libraries(main dp-decorator)
+target_link_libraries(main dp-strategy)
 
 install(TARGETS main RUNTIME DESTINATION "${INSTALL_PREFIX}/bin")

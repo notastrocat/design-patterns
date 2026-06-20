@@ -3,8 +3,9 @@
 #include <format>
 #include <fstream>
 #include "Decorator/Decorator.hpp"
-#include "utils/nlohmann/json.hpp"
-#include "utils/common.hpp"
+#include "Strategy/Strategy.hpp"
+#include "nlohmann/json.hpp"
+#include "common.hpp"
 
 using json = nlohmann::json;
 
@@ -21,11 +22,16 @@ int main(int argc, char* argv[]) {
     // std::cout << argv[1] << std::format("\n");
     bool b_DEBUG = false;
  
-    if (!b_JsonConfig) {
+    if (!b_JsonConfig)
+    {
         std::cout << colors::foreground::magenta << std::format("Running tests for Decorator Pattern: -\n") << colors::reset_all;
         Decorator::generateMenu();
-    } else { 
-        try {
+        Strategy::clientCode();
+    }
+    else
+    {
+        try
+        {
             std::ifstream f(argv[1]);
             json j = json::parse(f);
             j.value("debug", false) ? b_DEBUG = true : b_DEBUG = false;
@@ -38,7 +44,14 @@ int main(int argc, char* argv[]) {
                 std::cout << colors::foreground::magenta << std::format("Running tests for Decorator Pattern: -\n") << colors::reset_all;
                 Decorator::generateMenu();
             }
-        } catch (const nlohmann::json::parse_error& e) {
+
+            if (j.value("decorator", false)) {
+                std::cout << colors::foreground::magenta << std::format("Running tests for Decorator Pattern: -\n") << colors::reset_all;
+                Strategy::clientCode();
+            }
+        }
+        catch (const nlohmann::json::parse_error& e)
+        {
             std::cerr << std::format("JSON parsing error: {}\n", e.what());
             return 1;
         }

@@ -1,4 +1,5 @@
 #include "string"
+#pragma once
 
 // file i/o can also be made part of this "common" header
 
