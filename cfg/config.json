@@ -1,5 +1,6 @@
 {
     "debug": false,
     "decorator": true,
-    "strategy": true
+    "strategy": true,
+    "observer": true
 }

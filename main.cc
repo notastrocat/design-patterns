@@ -4,8 +4,9 @@
 #include <fstream>
 #include "Decorator/Decorator.hpp"
 #include "Strategy/Strategy.hpp"
+#include "Observer/Observer.hpp"
 #include "nlohmann/json.hpp"
-#include "common.hpp"
+#include "colors.hpp"
 
 using json = nlohmann::json;
 
@@ -27,6 +28,7 @@ int main(int argc, char* argv[]) {
         std::cout << colors::foreground::magenta << std::format("Running tests for Decorator Pattern: -\n") << colors::reset_all;
         Decorator::generateMenu();
         Strategy::clientCode();
+        Observer::clientCode();
     }
     else
     {
@@ -45,9 +47,16 @@ int main(int argc, char* argv[]) {
                 Decorator::generateMenu();
             }
 
-            if (j.value("decorator", false)) {
-                std::cout << colors::foreground::magenta << std::format("Running tests for Decorator Pattern: -\n") << colors::reset_all;
+            if (j.value("strategy", false)) {
+                std::cout << colors::foreground::magenta << std::format("Running tests for Strategy Pattern: -\n") << colors::reset_all;
                 Strategy::clientCode();
+                std::cout << std::endl;
+            }
+
+            if (j.value("observer", false)) {
+                std::cout << colors::foreground::magenta << std::format("Running tests for Observer Pattern: -\n") << colors::reset_all;
+                Observer::clientCode();
+                // std::cout << std::endl;
             }
         }
         catch (const nlohmann::json::parse_error& e)

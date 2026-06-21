@@ -1,6 +1,6 @@
 #include <iostream>
 #include <memory>
-#include "common.hpp"
+#include "colors.hpp"
 
 namespace Strategy
 {

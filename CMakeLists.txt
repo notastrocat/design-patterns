@@ -21,9 +21,11 @@ include_directories("${CMAKE_SOURCE_DIR}/utils")
 
 add_subdirectory(Decorator)
 add_subdirectory(Strategy)
+add_subdirectory(Observer)
 
 add_executable(main main.cc)
 target_link_libraries(main dp-decorator)
 target_link_libraries(main dp-strategy)
+target_link_libraries(main dp-observer)
 
 install(TARGETS main RUNTIME DESTINATION "${INSTALL_PREFIX}/bin")
