@@ -5,6 +5,7 @@
 #include "Decorator/Decorator.hpp"
 #include "Strategy/Strategy.hpp"
 #include "Observer/Observer.hpp"
+#include "Factory/Factory.hpp"
 #include "nlohmann/json.hpp"
 #include "colors.hpp"
 
@@ -29,6 +30,13 @@ int main(int argc, char* argv[]) {
         Decorator::generateMenu();
         Strategy::clientCode();
         Observer::clientCode();
+
+        std::cout << std::endl;
+        FactoryMethod::SpearMaker spearFactory;
+        FactoryMethod::ClubMaker clubFactory;
+
+        FactoryMethod::clientCode(spearFactory, "LongTooth", 25);
+        FactoryMethod::clientCode(clubFactory, "HeavyLog", 10);
     }
     else
     {
@@ -39,7 +47,7 @@ int main(int argc, char* argv[]) {
             j.value("debug", false) ? b_DEBUG = true : b_DEBUG = false;
 
             if (b_DEBUG) {
-                std::cout << std::format("JSON file loaded successfully: {}\n", j.dump(4));
+                std::cout << std::format("JSON file loaded successfully: -\n{}\n", j.dump(4));
             }
 
             if (j.value("decorator", false)) {
@@ -57,6 +65,16 @@ int main(int argc, char* argv[]) {
                 std::cout << colors::foreground::magenta << std::format("Running tests for Observer Pattern: -\n") << colors::reset_all;
                 Observer::clientCode();
                 // std::cout << std::endl;
+            }
+
+            if (j.value("factory", false)) {
+                std::cout << std::endl;
+                std::cout << colors::foreground::magenta << std::format("Running tests for FactoryMethod Pattern: -\n") << colors::reset_all;
+                FactoryMethod::SpearMaker spearFactory;
+                FactoryMethod::ClubMaker clubFactory;
+
+                FactoryMethod::clientCode(spearFactory, "LongTooth", 25);
+                FactoryMethod::clientCode(clubFactory, "HeavyLog", 10);
             }
         }
         catch (const nlohmann::json::parse_error& e)
