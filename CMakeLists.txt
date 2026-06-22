@@ -23,11 +23,13 @@ add_subdirectory(Decorator)
 add_subdirectory(Strategy)
 add_subdirectory(Observer)
 add_subdirectory(Factory)
+add_subdirectory(AbstractFactory)
 
 add_executable(main main.cc)
 target_link_libraries(main dp-decorator)
 target_link_libraries(main dp-strategy)
 target_link_libraries(main dp-observer)
 target_link_libraries(main dp-factory)
+target_link_libraries(main dp-abstract-factory)
 
 install(TARGETS main RUNTIME DESTINATION "${INSTALL_PREFIX}/bin")

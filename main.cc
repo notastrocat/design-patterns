@@ -6,6 +6,7 @@
 #include "Strategy/Strategy.hpp"
 #include "Observer/Observer.hpp"
 #include "Factory/Factory.hpp"
+#include "AbstractFactory/AbstractFactory.hpp"
 #include "nlohmann/json.hpp"
 #include "colors.hpp"
 
@@ -37,6 +38,11 @@ int main(int argc, char* argv[]) {
 
         FactoryMethod::clientCode(spearFactory, "LongTooth", 25);
         FactoryMethod::clientCode(clubFactory, "HeavyLog", 10);
+
+        std::cout << std::endl;
+        AbstractFactory::clientCode(AbstractFactory::StoneAgeArmory{}, "Spear", 25, "Club", 10, "Hide Armor", 15);
+        AbstractFactory::clientCode(AbstractFactory::MedievalArmory{}, "CrossBow", 105, "Sword", 85, "Chain Mail Armor", 150);
+        AbstractFactory::clientCode(AbstractFactory::ModernArmory{}, "Rifle", 125, "Knife", 120, "Bullet Proof Armor", 95);
     }
     else
     {
@@ -75,6 +81,14 @@ int main(int argc, char* argv[]) {
 
                 FactoryMethod::clientCode(spearFactory, "LongTooth", 25);
                 FactoryMethod::clientCode(clubFactory, "HeavyLog", 10);
+            }
+
+            if (j.value("abstractFactory", false)) {
+                std::cout << std::endl;
+                std::cout << colors::foreground::magenta << std::format("Running tests for AbstractFactoryMethod Pattern: -\n") << colors::reset_all;
+                AbstractFactory::clientCode(AbstractFactory::StoneAgeArmory{}, "Spear", 25, "Club", 10, "Hide Armor", 15);
+                AbstractFactory::clientCode(AbstractFactory::MedievalArmory{}, "CrossBow", 105, "Sword", 85, "Chain Mail Armor", 150);
+                AbstractFactory::clientCode(AbstractFactory::ModernArmory{}, "Rifle", 125, "Knife", 120, "Bullet Proof Armor", 95);
             }
         }
         catch (const nlohmann::json::parse_error& e)

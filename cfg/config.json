@@ -3,5 +3,6 @@
     "decorator": true,
     "strategy": true,
     "observer": true,
-    "factory": true
+    "factory": true,
+    "abstractFactory": true
 }
