@@ -32,6 +32,8 @@ public:
     std::string attack() const override;
 };
 
+// ---
+
 // Creator Interface
 class ToolMaker {
 public:
@@ -58,6 +60,9 @@ public:
     std::unique_ptr<IWeapon> FactoryMethod(std::string name, int power) const override;
 };
 
+// ---
+
+// Client Code
 void clientCode(const ToolMaker& toolMaker, std::string name, int power);
 
 }  // end namespace *FactoryMethod*

@@ -17,6 +17,7 @@ namespace Observer
 
 class TribalMember;
 
+// Observable Interface
 class ILookOut {
 public:
     virtual ~ILookOut() = default;
@@ -26,6 +27,7 @@ public:
     virtual void notifyAll() = 0;
 };
 
+// Concrete Observable
 class LookOut : public ILookOut {
     std::vector<TribalMember*> observers_;
     std::string signal_;
@@ -36,6 +38,9 @@ public:
     void notifyAll() override;
 };
 
+// ---
+
+// Observer Interface
 class TribalMember {
 public:
     virtual ~TribalMember() = default;
@@ -44,6 +49,7 @@ public:
     virtual void leaveTribe() = 0;
 };
 
+// Concrete Observers
 class Hunter : public TribalMember {
     std::string name_;
     ILookOut* lookOut_;
@@ -66,6 +72,9 @@ public:
     void leaveTribe() override;
 };
 
+// ---
+
+// Client Code
 void clientCode();
 
 }  // end namespace *Observer*
