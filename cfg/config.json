@@ -4,5 +4,6 @@
     "strategy": true,
     "observer": true,
     "factory": true,
-    "abstractFactory": true
+    "abstractFactory": true,
+    "adapter": true
 }

@@ -2,11 +2,14 @@
 #include <memory>
 #include <format>
 #include <fstream>
+
 #include "Decorator/Decorator.hpp"
 #include "Strategy/Strategy.hpp"
 #include "Observer/Observer.hpp"
 #include "Factory/Factory.hpp"
 #include "AbstractFactory/AbstractFactory.hpp"
+#include "Adapter/Adapter.hpp"
+
 #include "nlohmann/json.hpp"
 #include "colors.hpp"
 
@@ -43,6 +46,9 @@ int main(int argc, char* argv[]) {
         AbstractFactory::clientCode(AbstractFactory::StoneAgeArmory{}, "Spear", 25, "Club", 10, "Hide Armor", 15);
         AbstractFactory::clientCode(AbstractFactory::MedievalArmory{}, "CrossBow", 105, "Sword", 85, "Chain Mail Armor", 150);
         AbstractFactory::clientCode(AbstractFactory::ModernArmory{}, "Rifle", 125, "Knife", 120, "Bullet Proof Armor", 95);
+
+        std::cout<<std::endl;
+        Adapter::clientCode();
     }
     else
     {
@@ -89,6 +95,12 @@ int main(int argc, char* argv[]) {
                 AbstractFactory::clientCode(AbstractFactory::StoneAgeArmory{}, "Spear", 25, "Club", 10, "Hide Armor", 15);
                 AbstractFactory::clientCode(AbstractFactory::MedievalArmory{}, "CrossBow", 105, "Sword", 85, "Chain Mail Armor", 150);
                 AbstractFactory::clientCode(AbstractFactory::ModernArmory{}, "Rifle", 125, "Knife", 120, "Bullet Proof Armor", 95);
+            }
+
+            if (j.value("adapter", false)) {
+                std::cout<<std::endl;
+                std::cout << colors::foreground::magenta << std::format("Running tests for Adapter Pattern: -\n") << colors::reset_all;
+                Adapter::clientCode();
             }
         }
         catch (const nlohmann::json::parse_error& e)
