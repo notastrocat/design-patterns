@@ -9,6 +9,7 @@
 #include "Factory/Factory.hpp"
 #include "AbstractFactory/AbstractFactory.hpp"
 #include "Adapter/Adapter.hpp"
+#include "Proxy/Proxy.hpp"
 
 #include "nlohmann/json.hpp"
 #include "colors.hpp"
@@ -16,7 +17,7 @@
 using json = nlohmann::json;
 
 int main(int argc, char* argv[]) {
-    // std::cout << std::format("\033[35mDesign Patterns in C++20\033[0m\n");
+    std::cout << colors::foreground::yellow << std::format("Design Patterns in C++20\n") << colors::reset_all;
 
     bool b_JsonConfig = false;
     if (argc < 2) {
@@ -32,10 +33,17 @@ int main(int argc, char* argv[]) {
     {
         std::cout << colors::foreground::magenta << std::format("Running tests for Decorator Pattern: -\n") << colors::reset_all;
         Decorator::generateMenu();
+
+        std::cout << std::endl;
+        std::cout << colors::foreground::magenta << std::format("Running tests for Strategy Pattern: -\n") << colors::reset_all;
         Strategy::clientCode();
+
+        std::cout << std::endl;
+        std::cout << colors::foreground::magenta << std::format("Running tests for Observer Pattern: -\n") << colors::reset_all;
         Observer::clientCode();
 
         std::cout << std::endl;
+        std::cout << colors::foreground::magenta << std::format("Running tests for FactoryMethod Pattern: -\n") << colors::reset_all;
         FactoryMethod::SpearMaker spearFactory;
         FactoryMethod::ClubMaker clubFactory;
 
@@ -43,12 +51,18 @@ int main(int argc, char* argv[]) {
         FactoryMethod::clientCode(clubFactory, "HeavyLog", 10);
 
         std::cout << std::endl;
+        std::cout << colors::foreground::magenta << std::format("Running tests for AbstractFactoryMethod Pattern: -\n") << colors::reset_all;
         AbstractFactory::clientCode(AbstractFactory::StoneAgeArmory{}, "Spear", 25, "Club", 10, "Hide Armor", 15);
         AbstractFactory::clientCode(AbstractFactory::MedievalArmory{}, "CrossBow", 105, "Sword", 85, "Chain Mail Armor", 150);
         AbstractFactory::clientCode(AbstractFactory::ModernArmory{}, "Rifle", 125, "Knife", 120, "Bullet Proof Armor", 95);
 
         std::cout<<std::endl;
+        std::cout << colors::foreground::magenta << std::format("Running tests for Adapter Pattern: -\n") << colors::reset_all;
         Adapter::clientCode();
+
+        std::cout<<std::endl;
+        std::cout << colors::foreground::magenta << std::format("Running tests for Proxy Pattern: -\n") << colors::reset_all;
+        Proxy::clientCode();
     }
     else
     {
@@ -101,6 +115,12 @@ int main(int argc, char* argv[]) {
                 std::cout<<std::endl;
                 std::cout << colors::foreground::magenta << std::format("Running tests for Adapter Pattern: -\n") << colors::reset_all;
                 Adapter::clientCode();
+            }
+
+            if (j.value("proxy", false)) {
+                std::cout<<std::endl;
+                std::cout << colors::foreground::magenta << std::format("Running tests for Proxy Pattern: -\n") << colors::reset_all;
+                Proxy::clientCode();
             }
         }
         catch (const nlohmann::json::parse_error& e)

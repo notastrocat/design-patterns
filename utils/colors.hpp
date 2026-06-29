@@ -65,17 +65,17 @@ namespace colors {
         const std::string magenta("\033[45m");
         const std::string cyan("\033[46m");
 
-        const std::string light_gray("\03347m");
-        const std::string dark_gray("\033100m");
-        const std::string light_red("\033101m");
-        const std::string light_green("\033102m");
+        const std::string light_gray("\033[47m");
+        const std::string dark_gray("\033[100m");
+        const std::string light_red("\033[101m");
+        const std::string light_green("\033[102m");
 
-        const std::string light_yellow("\033103m");
-        const std::string light_blue("\033104m");
-        const std::string light_magenta("\033105m");
-        const std::string light_cyan("\033106m");
+        const std::string light_yellow("\033[103m");
+        const std::string light_blue("\033[104m");
+        const std::string light_magenta("\033[105m");
+        const std::string light_cyan("\033[106m");
 
-        const std::string white("\033107m");
+        const std::string white("\033[107m");
     }
 }
 // color codes to be able to log various things - basic idea inspired from various tools

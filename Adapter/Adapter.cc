@@ -34,7 +34,7 @@ void clientCode() {
     std::cout << colors::foreground::blue << "Created RoundHole with radius 5.\n\n" << colors::reset_all;
 
     RoundPeg normalPeg(5);
-    std::cout << colors::foreground::yellow << "Does a standard RoundPeg (radius 5) fit? "
+    std::cout << colors::foreground::light_blue << "Does a standard RoundPeg (radius 5) fit? "
               << (hole.fits(normalPeg) ? colors::foreground::green + "Yes!" : colors::foreground::light_red + "No.")
               << "\n" + colors::reset_all;
 
@@ -44,12 +44,12 @@ void clientCode() {
     SquarePegAdapter smallAdapter(std::move(smallSqPeg));
     SquarePegAdapter largeAdapter(std::move(largeSqPeg));
 
-    std::cout << colors::foreground::yellow << "Does a SquarePeg (width 5) fit? "
+    std::cout << colors::foreground::light_blue << "Does a SquarePeg (width 5) fit? "
               << (hole.fits(smallAdapter.getRadius()) ?
                     colors::foreground::green + "Yes!" : colors::foreground::light_red + "No.")
               << "\n" + colors::reset_all;
               
-    std::cout << colors::foreground::yellow << "Does a SquarePeg (width 10) fit? "
+    std::cout << colors::foreground::light_blue << "Does a SquarePeg (width 10) fit? "
               << (hole.fits(largeAdapter.getRadius()) ?
                     colors::foreground::green + "Yes!" : colors::foreground::light_red + "No.")
               << "\n" + colors::reset_all;
