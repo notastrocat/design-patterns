@@ -1,0 +1,16 @@
+# note: the following settings are compatible with clang-format-12
+Language: Cpp
+BasedOnStyle: Google
+ColumnLimit: 120
+SortIncludes: false
+IndentWidth: 4
+AccessModifierOffset: -4
+BreakBeforeBraces: Allman
+FixNamespaceComments : true
+KeepEmptyLinesAtTheStartOfBlocks: true
+MaxEmptyLinesToKeep: 3
+AllowShortFunctionsOnASingleLine: Inline
+DerivePointerAlignment: false
+PointerAlignment: Right
+IndentPPDirectives: BeforeHash
+
